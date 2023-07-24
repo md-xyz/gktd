@@ -821,7 +821,8 @@ blockquote {
   -webkit-backdrop-filter: blur(30px);
   backdrop-filter: blur(30px);
   color: gray;
-  mix-blend-mode: luminosity;
+  /* mix-blend-mode: luminosity; */
+  filter: grayscale(1);
   background-color: rgba(136, 136, 136, .16);
   border: 1px solid rgba(255, 255, 255, .12);
   border-radius: 8px;
