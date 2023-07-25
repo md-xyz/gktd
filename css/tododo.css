@@ -731,6 +731,7 @@ blockquote {
 
 .key {
   width: auto;
+  min-width: 20px;
   height: 20px;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
@@ -1003,3 +1004,13 @@ a {
 .todo-item-flex {
   max-width: calc(100% - 48px);
 }
+
+.to-do_item:hover {
+  filter: none !important;
+  transition: filter 400ms ease;
+}
+
+.nav-left, .nav-right {
+  transition: transform 0.4s ease;
+}
+
