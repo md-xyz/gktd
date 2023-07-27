@@ -201,7 +201,6 @@ function updateSiteCards() {
   // Apply sortable widget to non-completed tasks
   // Add the sortable functionality to the toDoList
   $(toDoList).sortable({
-    // Only make the .to-do_item elements sortable
     items: toDoItem,
     start: function (event, ui) {
       // When the user starts sorting a to-do item, this function will run
