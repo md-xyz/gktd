@@ -205,14 +205,8 @@ function updateSiteCards() {
   // Apply sortable widget to non-completed tasks
   // Add the sortable functionality to the toDoList
   $(toDoList).sortable({
+    // Only make the .to-do_item elements sortable
     items: toDoItem,
-    start: function (event, ui) {
-      // When the user starts sorting a to-do item, this function will run
-      if (window.navigator && window.navigator.vibrate) {
-        // Vibrate for 200ms
-        window.navigator.vibrate(200);
-      }
-    },
     update: function (event, ui) {
       // When the user stops sorting the to-do items, this function will run
       let orderedIDs = $(this).sortable("toArray", { attribute: "data-id" }); // Get the ordered list of IDs
@@ -220,11 +214,11 @@ function updateSiteCards() {
         return toDoItems.find((item) => item.id == id); // Return the item object that matches the ID
       });
       resetTheCookie();
-  
+
       // Add the blur to all the items except the first one
       let notFirstItems = $(toDoList).find(toDoItem + ":not(:first)");
       let firstItem = $(toDoList).find(toDoItem + ":first");
-  
+
       // If blur is currently active, reapply it after sorting
       if (isBlurred) {
         notFirstItems.css("filter", "blur(4px) opacity(0.3)");
@@ -232,7 +226,13 @@ function updateSiteCards() {
       }
     },
   });
-  
+
+  if (isBlurred) {
+    $(toDoList)
+      .find(toDoItem + ":not(:first)")
+      .css("filter", "blur(4px) opacity(0.3)");
+  }
+}
 
 function updateCompletedSiteCards() {
   $(completedToDoList).html("");
