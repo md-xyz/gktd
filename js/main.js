@@ -278,6 +278,7 @@ $(document).on("click", ".to-do_item-icon", function (event) {
 });
 
 // Mark an item complete
+// Mark an item complete
 $(document).on("click", toDoItem, function () {
   let cardId = +$(this).attr("data-id");
   let index = toDoItems.findIndex((item) => item.id === cardId);
@@ -285,8 +286,10 @@ $(document).on("click", toDoItem, function () {
     let item = toDoItems.splice(index, 1)[0];
     item.completed = !item.completed;
     completedToDoItems.push(item);
-    if (item.completed) {
-      getGif("goku");
+
+    // All items completed
+    if (toDoItems.length === 0) {
+      getGif();
     }
   } else {
     index = completedToDoItems.findIndex((item) => item.id === cardId);
