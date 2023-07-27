@@ -83,10 +83,6 @@ hotkeys("f", function (event, handler) {
     navRight.css("transform", "");
     localStorage.setItem("blur", "false");
     isBlurred = false;
-
-    particlesJS.load("particles-js", "particles.json", function () {
-      console.log("callback - particles.js config loaded");
-    });
   } else {
     notFirstItems.css("filter", "blur(4px) opacity(0.3)");
     completedItems.css("filter", "blur(4px) opacity(0.3)");
@@ -207,6 +203,13 @@ function updateSiteCards() {
   $(toDoList).sortable({
     // Only make the .to-do_item elements sortable
     items: toDoItem,
+    start: function (event, ui) {
+      // When the user starts sorting a to-do item, this function will run
+      if (window.navigator && window.navigator.vibrate) {
+        // Vibrate for 200ms
+        window.navigator.vibrate(200);
+      }
+    },
     update: function (event, ui) {
       // When the user stops sorting the to-do items, this function will run
       let orderedIDs = $(this).sortable("toArray", { attribute: "data-id" }); // Get the ordered list of IDs
