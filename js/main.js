@@ -357,3 +357,11 @@ if ('serviceWorker' in navigator) {
     });
   });
 }
+
+$("#searchAddItemField").on('focus', function(event) {
+  event.preventDefault();
+  var userInput = prompt("Please enter your to-do item");
+  if (userInput != null) {
+    $(this).val(userInput);
+  }
+});
